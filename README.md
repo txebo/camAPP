@@ -10,6 +10,15 @@ Aplicación de escritorio en Python para previsualizar una webcam física y reen
 - pyvirtualcam
 - PyInstaller
 
+## Archivos principales
+
+- `logitech_webcam_app.py`: app principal
+- `pyproject.toml`: metadatos y dependencias modernas del proyecto
+- `requirements.txt`: dependencias runtime
+- `requirements-dev.txt`: dependencias de desarrollo y build
+- `Makefile`: atajos para instalar, ejecutar, validar y empaquetar
+- `webcam_app.spec`: configuración de PyInstaller
+
 ## Funcionalidad actual
 
 - Vista previa en vivo de la cámara física
@@ -37,6 +46,12 @@ source .venv/bin/activate
 pip install -r requirements-dev.txt
 ```
 
+O con `make`:
+
+```bash
+make install
+```
+
 ## Ejecutar
 
 ```bash
@@ -44,11 +59,29 @@ source .venv/bin/activate
 python logitech_webcam_app.py
 ```
 
+O con `make`:
+
+```bash
+make run
+```
+
+## Validación rápida
+
+```bash
+make check
+```
+
 ## Empaquetar binario
 
 ```bash
 source .venv/bin/activate
 pyinstaller --noconfirm webcam_app.spec
+```
+
+O con `make`:
+
+```bash
+make build
 ```
 
 El binario generado queda en `dist/webcam_app`.

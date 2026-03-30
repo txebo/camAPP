@@ -24,6 +24,9 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
+APP_NAME = "camApp"
+APP_VERSION = "0.1.0"
+
 
 @dataclass(frozen=True)
 class Resolution:
@@ -35,7 +38,7 @@ class Resolution:
 class CameraWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Logitech Webcam App")
+        self.setWindowTitle(f"{APP_NAME} {APP_VERSION}")
         self.setGeometry(100, 100, 1200, 800)
         self.setStyleSheet("""
             QMainWindow {
@@ -386,8 +389,15 @@ class CameraWindow(QMainWindow):
         event.accept()
 
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
+def main(argv: list[str] | None = None) -> int:
+    args = sys.argv if argv is None else argv
+    app = QApplication(args)
+    app.setApplicationName(APP_NAME)
+    app.setApplicationDisplayName(APP_NAME)
     window = CameraWindow()
     window.show()
-    sys.exit(app.exec())
+    return app.exec()
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
