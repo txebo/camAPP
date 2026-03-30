@@ -1,0 +1,3 @@
+opencv-python==4.13.0.92
+PySide6==6.11.0
+pyvirtualcam==0.15.0
